@@ -1,0 +1,18 @@
+.map {
+  &__marker {
+    @apply relative transition-all bg-primary text-white px-2.5 py-1 rounded-full flex gap-1 items-center cursor-pointer z-10;
+
+    &-card {
+      @apply absolute top-6 left-0 bg-white shadow rounded-xl text-black flex z-10;
+      width: 20rem;
+      height: 11.25rem;
+      z-index: 200000 !important;
+    }
+  }
+
+  &__card-image {
+    @apply bg-cover flex-1 z-10;
+
+    border-radius: 0.75rem 0 0 0.75rem;
+  }
+}

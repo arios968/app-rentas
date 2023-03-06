@@ -1,0 +1,65 @@
+@import "../../index.scss";
+
+.input,
+#address {
+  @apply rounded-md border outline-none px-4 py-1.5 text-sm;
+
+  line-height: 1;
+  box-shadow: none;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+
+  &:focus {
+    @apply border-transparent;
+    box-shadow: 0 0 0 0.125rem $primary-color;
+  }
+
+  &__container {
+    @apply relative flex flex-col;
+
+    &:focus-within label {
+      @apply text-primary bg-white;
+
+      transform: translate(0, -0.375rem) scale(0.8);
+    }
+
+    .filled {
+      transform: translate(0, -0.375rem) scale(0.8);
+    }
+  }
+
+  &__label {
+    @apply absolute pointer-events-none text-gray-500 px-1 text-sm;
+
+    transform: translate(0, 0.625rem) scale(1);
+    transform-origin: top left;
+    transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    line-height: 1;
+    left: 1rem;
+  }
+}
+.autocomplete {
+  label {
+    @apply hidden;
+
+    &:first-of-type {
+      @apply block text-sm;
+    }
+  }
+
+  button {
+    @apply hidden;
+  }
+
+  #address {
+    @apply mt-1;
+  }
+}
+
+#addressName,
+#street,
+#city,
+#country,
+#postCode {
+  @apply hidden;
+  background-color: red !important;
+}
