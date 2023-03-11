@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { Input } from "../input";
 import { PropertyContext } from "../../context/PropertyProvider";
 import { modalStyles, defaultProperty } from ".";
+import { getInstructions, setInstructions } from "../../utils/modal";
 
 export const PostProperty = ({ showModal, toggleModal }) => {
   const { postProperty, property, setProperty } = useContext(PropertyContext);

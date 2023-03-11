@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Modal from "react-modal";
 import { ToastContainer } from "react-toastify";
 import { Card } from "./components/card";
@@ -8,22 +8,59 @@ import { Auth } from "./components/auth";
 import { Map } from "./components/map";
 import { PostProperty } from "./components/post-property";
 import { PropertyContext } from "./context/PropertyProvider";
+import { AuthContext } from "./context/AuthProvider";
+import { InstructionModal } from "./components/instruction-modal";
+import { getInstructions, MODALS, setInstructions } from "./utils/modal";
+import { getUser } from "./utils/auth";
 import "react-toastify/dist/ReactToastify.css";
 
 Modal.setAppElement("#root");
+
 function App() {
-  const [modal, setModal] = useState({ auth: false, postProperty: false });
+  const [modal, setModal] = useState(MODALS);
   const [authModal, setAuthModal] = useState("login");
+  const [currentInstruction, setCurrentInstruction] = useState("register");
 
   const { properties } = useContext(PropertyContext);
+  const { session } = useContext(AuthContext);
+
+  const [instructions, user] = [getInstructions(), getUser()];
+
+  const isNewUser = () => {
+    return !instructions || (!instructions.register && !user.id);
+  };
 
   const toggleModal = (name) => {
     setModal({ auth: false, postProperty: false, [name]: !modal[name] });
   };
 
+  useEffect(() => {
+    if (!instructions) {
+      setInstructions({
+        register: false,
+        post: false,
+        types: false,
+        search: false,
+      });
+    }
+    if (isNewUser()) setModal({ ...modal, instructions: true });
+  }, []);
+
+  useEffect(() => {
+    if (session && !instructions?.post) {
+      toggleModal("instructions");
+      setCurrentInstruction("post");
+    }
+  }, [session]);
+
   return (
     <div className="h-screen flex flex-col">
-      <Header toggleModal={toggleModal} setAuthModal={setAuthModal} />
+      <Header
+        toggleModal={toggleModal}
+        setAuthModal={setAuthModal}
+        setModal={setModal}
+        setCurrentInstruction={setCurrentInstruction}
+      />
       <main className="flex flex-1 main flex-col md:flex-row">
         <div className="properties__container">
           <div className="mb-4">
@@ -37,7 +74,7 @@ function App() {
             ))}
           </section>
         </div>
-        <section className="flex-1">{!modal.postProperty && <Map />}</section>
+        <section className="flex-1">{!modal?.postProperty && <Map />}</section>
       </main>
       <Footer />
       <Auth
@@ -51,6 +88,12 @@ function App() {
           toggleModal={toggleModal}
         />
       )}
+      <InstructionModal
+        showModal={modal.instructions}
+        toggleModal={toggleModal}
+        setAuthModal={setAuthModal}
+        currentInstruction={currentInstruction}
+      />
       <ToastContainer />
     </div>
   );

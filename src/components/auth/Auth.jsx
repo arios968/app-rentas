@@ -9,6 +9,7 @@ import { FirebaseAuth } from "../../firebase/config";
 import { Input } from "../input";
 import { AuthContext } from "../../context/AuthProvider";
 import { modalStyles, getErrors } from ".";
+import { getInstructions, setInstructions } from "../../utils/modal";
 
 export const Auth = ({ showModal, toggleModal, isLogin = true }) => {
   const { openSession } = useContext(AuthContext);
@@ -16,6 +17,8 @@ export const Auth = ({ showModal, toggleModal, isLogin = true }) => {
   const [data, setData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState([]);
   const [validate, setValidate] = useState(false);
+
+  const instructions = getInstructions();
 
   useEffect(() => {
     setErrors(getErrors(data));
@@ -43,6 +46,7 @@ export const Auth = ({ showModal, toggleModal, isLogin = true }) => {
       openSession(user.uid);
       toast.success("Usuario registrado correctamente!!");
       closeModal();
+      setInstructions({ ...instructions, register: true });
     } catch (error) {
       const repeatedEmail = error.message.includes("email-already-in-use");
       toast.error(
@@ -61,6 +65,7 @@ export const Auth = ({ showModal, toggleModal, isLogin = true }) => {
       openSession(user.uid);
       toast.success("Bienvenido!!");
       closeModal();
+      setInstructions({ ...instructions, register: true });
     } catch (error) {
       toast.error("Credenciales incorrectas!!");
     }
@@ -72,7 +77,12 @@ export const Auth = ({ showModal, toggleModal, isLogin = true }) => {
         <button
           className="top-0 right-0 absolute"
           type="button"
-          onClick={closeModal}
+          onClick={() => {
+            closeModal();
+            if (!instructions?.register || !isLogin) {
+              toggleModal("instructions");
+            }
+          }}
         >
           <i className="fa-sharp fa-solid fa-circle-xmark text-primary text-2xl cursor-pointer" />
         </button>

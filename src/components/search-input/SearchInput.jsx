@@ -1,6 +1,6 @@
 import "./SearchInput.scss";
 
-export const SearchInput = ({ value = "", handleChange }) => {
+export const SearchInput = ({ value = "", handleChange, onClick }) => {
   return (
     <div className="input__container">
       <input
@@ -8,6 +8,7 @@ export const SearchInput = ({ value = "", handleChange }) => {
         className="input"
         value={value}
         onChange={handleChange}
+        onClick={onClick}
       />
       <label className={`${value ? "filled" : ""} input__label`}>
         Ciudad, barrio o sector o sitio de interés

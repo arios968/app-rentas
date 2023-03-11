@@ -1,17 +1,40 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { SearchInput } from "../search-input";
 import { AuthContext } from "../../context/AuthProvider";
 import { PropertyContext as context } from "../../context/PropertyProvider";
 import { PROPERTY_TYPES } from ".";
 import "./Header.scss";
+import { getInstructions, setInstructions } from "../../utils/modal";
 
-export const Header = ({ setAuthModal, toggleModal }) => {
+export const Header = ({
+  setAuthModal,
+  toggleModal,
+  setCurrentInstruction,
+}) => {
   const { closeSession, user } = useContext(AuthContext);
   const { location, setLocation, types, toggleTypes } = useContext(context);
+  const instructions = getInstructions();
 
   const showAppModal = (authModal) => {
     toggleModal("auth");
     setAuthModal(authModal);
+  };
+
+  const filterByType = (type) => {
+    if (!instructions?.types) {
+      setInstructions({ ...instructions, types: true });
+      setCurrentInstruction("types");
+      return toggleModal("instructions");
+    }
+    toggleTypes(type);
+  };
+
+  const doFirstSearch = () => {
+    if (!instructions?.search) {
+      setInstructions({ ...instructions, search: true });
+      toggleModal("instructions");
+      setCurrentInstruction("search");
+    }
   };
 
   return (
@@ -20,6 +43,7 @@ export const Header = ({ setAuthModal, toggleModal }) => {
         <SearchInput
           value={location}
           handleChange={({ target }) => setLocation(target.value)}
+          onClick={doFirstSearch}
         />
         {PROPERTY_TYPES.map((item) => (
           <button
@@ -27,7 +51,7 @@ export const Header = ({ setAuthModal, toggleModal }) => {
             className={`header__filtering-button ${
               types.includes(item) ? "bg-primary text-white" : ""
             }`}
-            onClick={() => toggleTypes(item)}
+            onClick={() => filterByType(item)}
           >
             {item}
           </button>

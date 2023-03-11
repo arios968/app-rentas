@@ -48,6 +48,7 @@ export const MarkerCard = ({ item }) => {
       <div
         className="map__card-image"
         style={{ backgroundImage: `url(${image})` }}
+        onClick={() => window.open("https://wa.link/00qy76")}
       />
       <div className="flex-1 p-2 text-sm relative">
         <button className="absolute -right-2 -top-4">

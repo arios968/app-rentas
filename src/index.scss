@@ -48,3 +48,7 @@ button {
     height: 8.125rem;
   }
 }
+
+.button {
+  @apply border rounded-md px-5 py-1.5 text-white bg-primary;
+}
