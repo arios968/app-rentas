@@ -1,12 +1,8 @@
 ##Índice
 
-*MAJ 
+*[MAJ] 
 
-
-* 1. Descripción del proyecto
-* 2. Estado del proyecto
-
-*[Descripción del proyecto](#descripción-del-proyecto)
+*[Descripción del proyecto](#Aplicación web para la renta de inmuebles pensada para población de los sectores rurales de Antioquia)
 
 *[Estado del proyecto](#Estado-del-proyecto)
 
