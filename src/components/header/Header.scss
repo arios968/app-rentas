@@ -4,13 +4,13 @@
   @apply shadow-md py-5 px-10 flex items-center justify-between;
 
   &__filtering-button {
-    @apply px-4 rounded-full py-1 text-primary transition-all;
+    @apply px-4 rounded-full py-1 text-white transition-all;
 
-    box-shadow: 0 0 0 0.125rem $primary-color;
+    box-shadow: 0 0 0 0.125rem $gray-medium;
 
     &:hover {
       @apply text-white;
-      background-color: $dark-blue;
+      background-color: $orange-light;
     }
   }
 }

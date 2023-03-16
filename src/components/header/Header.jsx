@@ -38,8 +38,8 @@ export const Header = ({
   };
 
   return (
-    <header className="header">
-      <section className="flex items-center gap-4">
+    <header className="header bg-primary">
+      <section className="flex items-center gap-4 ">
         <SearchInput
           value={location}
           handleChange={({ target }) => setLocation(target.value)}
@@ -49,7 +49,7 @@ export const Header = ({
           <button
             key={item}
             className={`header__filtering-button ${
-              types.includes(item) ? "bg-primary text-white" : ""
+              types.includes(item) ? "bg-gray-medium text-white" : ""
             }`}
             onClick={() => filterByType(item)}
           >
@@ -61,30 +61,30 @@ export const Header = ({
         {user.authenticated ? (
           <>
             <button
-              className="border rounded-full px-5 py-1.5 text-white bg-primary flex gap-2 items-center font-light"
+              className="border rounded-full px-5 py-1.5 text-white bg-gray-medium flex gap-2 items-center font-light"
               onClick={() => toggleModal("postProperty")}
             >
               Publicar
               <i className="fa-solid fa-bag-shopping" />
             </button>
             <button
-              className="flex items-center text-primary gap-1"
+              className="flex items-center text-white gap-1"
               onClick={closeSession}
             >
-              <i className="fa-solid fa-right-from-bracket text-primary text-xl" />
+              <i className="fa-solid fa-right-from-bracket text-white text-xl" />
               <span>Cerrar sesión</span>
             </button>
           </>
         ) : (
           <>
             <button
-              className="text-primary font-semibold underline"
+              className="text-white font-semibold underline"
               onClick={() => showAppModal("login")}
             >
               Ingresar
             </button>
             <button
-              className="text-primary font-semibold underline"
+              className="text-white font-semibold underline"
               onClick={() => showAppModal("register")}
             >
               Crear cuenta
