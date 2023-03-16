@@ -5,7 +5,7 @@ export const Card = ({ item, index }) => {
 
   return (
   <div className="card w-64 shadow-lg rounded-lg overflow-hidden transform transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:shadow-2xl">
-    <img className="card__image w-full" src={image} alt="property" />
+    <img className="card__image w-full" src={image} alt="property" onClick={() => window.open("https://wa.link/00qy76")}/>
     <div className="card__body px-4 pt-4 pb-2.5">
       <small className="text-gray-500 text-xs">Desde:</small>
       <p className="font-semibold text-xl">{formatMoney(price)}</p>
