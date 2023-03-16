@@ -86,7 +86,7 @@ export const Auth = ({ showModal, toggleModal, isLogin = true }) => {
         >
           <i className="fa-sharp fa-solid fa-circle-xmark text-gray-medium text-2xl cursor-pointer" />
         </button>
-        <h3 className="text-gray-500 text-2xl font-bold mb-8 text-center">
+        <h3 className="text-500 text-2xl font-bold mb-8 text-center text-gray-medium ">
           {isLogin ? "Iniciar sesión" : "Crear cuenta"}
         </h3>
         <div className="flex flex-col gap-5">

@@ -3,7 +3,7 @@ import { PROPERTY_TYPES } from "../../header";
 export const Search = ({ toggleModal }) => {
   return (
     <div>
-      <p className="text-2xl font-bold mb-4 text-primary">
+      <p className="text-2xl font-bold mb-4  text-gray-medium">
         ¿Como buscar un inmueble por la ubicación?
       </p>
       <div className="input__container">

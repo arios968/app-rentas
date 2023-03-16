@@ -3,7 +3,7 @@ import { PROPERTY_TYPES } from "../../header";
 export const Types = ({ toggleModal }) => {
   return (
     <>
-      <p className="text-2xl font-bold mb-4 text-primary">
+      <p className="text-2xl font-bold mb-4 text-gray-medium">
         ¿Como filtrar los inmuebles?
       </p>
       <p className="text-start text-sm pl-2 mb-2">
@@ -11,7 +11,7 @@ export const Types = ({ toggleModal }) => {
       </p>
       <div className="flex justify-center gap-4 my-4">
         {PROPERTY_TYPES.map((type) => (
-          <button key={type} className="header__filtering-button">
+          <button key={type} className="header__filtering-button  bg-primary">
             {type}
           </button>
         ))}
@@ -25,11 +25,11 @@ export const Types = ({ toggleModal }) => {
       <p className="text-start text-sm pl-2">
         ● Puede seleccionar uno o varios tipos al tiempo
       </p>
-      <div className="flex justify-center gap-4 my-4">
+      <div className="flex justify-center gap-4 my-4  ">
         {PROPERTY_TYPES.map((type, index) => (
           <button
             key={type}
-            className={`header__filtering-button ${
+            className={`bg-primary header__filtering-button ${
               index ? "bg-primary text-white" : ""
             }`}
           >
@@ -42,7 +42,7 @@ export const Types = ({ toggleModal }) => {
       </p>
       <div className="flex justify-center gap-4 my-4">
         {PROPERTY_TYPES.map((type) => (
-          <button key={type} className="header__filtering-button">
+          <button key={type} className="header__filtering-button bg-primary">
             {type}
           </button>
         ))}

@@ -3,7 +3,7 @@ import React from "react";
 export const Register = ({ goToRegister, openAuthModal }) => {
   return (
     <>
-      <h3 className="text-4xl mb-4">Bienvenido</h3>
+      <h3 className="text-4xl mb-4  text-gray-medium">Bienvenido</h3>
       <p>
         Para poder interactuar con los inmuebles necesita crear una cuenta o
         iniciar sesión.
