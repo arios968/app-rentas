@@ -84,7 +84,7 @@ export const Auth = ({ showModal, toggleModal, isLogin = true }) => {
             }
           }}
         >
-          <i className="fa-sharp fa-solid fa-circle-xmark text-primary text-2xl cursor-pointer" />
+          <i className="fa-sharp fa-solid fa-circle-xmark text-gray-medium text-2xl cursor-pointer" />
         </button>
         <h3 className="text-gray-500 text-2xl font-bold mb-8 text-center">
           {isLogin ? "Iniciar sesión" : "Crear cuenta"}
@@ -107,7 +107,7 @@ export const Auth = ({ showModal, toggleModal, isLogin = true }) => {
           />
         </div>
         {isLogin && (
-          <p className="text-primary underline font-semibold mt-3 text-sm">
+          <p className="text-gray-medium underline font-semibold mt-3 text-sm">
             ¿Olvidaste tu contraseña?
           </p>
         )}
@@ -116,7 +116,7 @@ export const Auth = ({ showModal, toggleModal, isLogin = true }) => {
             errors.map((error) => <span key={error}>{error}</span>)}
         </div>
         <button
-          className="border rounded-full px-5 py-1.5 text-white flex gap-2 items-center font-light mx-auto mt-6 bg-primary"
+          className="border rounded-full px-5 py-1.5 text-white flex gap-2 items-center font-light mx-auto mt-6 bg-gray-medium"
           type="submit"
           onClick={handleSubmit}
         >

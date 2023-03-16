@@ -2,57 +2,27 @@ import { PROPERTY_TYPES } from "../../header";
 
 export const Search = ({ toggleModal }) => {
   return (
-    <>
+    <div>
       <p className="text-2xl font-bold mb-4 text-primary">
         ¿Como buscar un inmueble por la ubicación?
       </p>
-      <p>ACA DEBERÍA IR EL TEXTO RANDOM</p>
-      <p className="text-start text-sm pl-2 mb-2">
-        ● Presione uno de los botones
-      </p>
-      <div className="flex justify-center gap-4 my-4">
-        {PROPERTY_TYPES.map((type) => (
-          <button key={type} className="header__filtering-button">
-            {type}
-          </button>
-        ))}
-      </div>
-      <p className="text-start text-sm pl-2">
-        ● Después de seleccionar un tipo se verá de la siguiente forma:
-      </p>
-      <button className={`header__filtering-button bg-primary text-white my-4`}>
-        Fincas
-      </button>
-      <p className="text-start text-sm pl-2">
-        ● Puede seleccionar uno o varios tipos al tiempo
-      </p>
-      <div className="flex justify-center gap-4 my-4">
-        {PROPERTY_TYPES.map((type, index) => (
-          <button
-            key={type}
-            className={`header__filtering-button ${
-              index ? "bg-primary text-white" : ""
-            }`}
-          >
-            {type}
-          </button>
-        ))}
-      </div>
-      <p className="text-start text-sm pl-2 mb-2">
-        ● Si no selecciona ninguno, se mostraran todos los resultados
-      </p>
-      <div className="flex justify-center gap-4 my-4">
-        {PROPERTY_TYPES.map((type) => (
-          <button key={type} className="header__filtering-button">
-            {type}
-          </button>
-        ))}
-      </div>
+      <div className="input__container">
+      <input
+        type="text"
+        className="input"
+      />
+      <label className="input__label">
+        Ciudad, barrio o sector o sitio de interés
+      </label>
+      <i className="fa-solid fa-location-dot text-primary absolute right-1.5 top-2.5" />
+    </div>
+
+      <p className="text-justify">En esta session puedes buscar por municipio y/o vereda , los resultados apareceran en la parte de abajo segun tu busqueda </p>
       <div className="flex gap-4 justify-center mt-6 items-center">
         <button className="button" onClick={() => toggleModal("instructions")}>
           Aceptar
         </button>
       </div>
-    </>
+    </div>
   );
 };

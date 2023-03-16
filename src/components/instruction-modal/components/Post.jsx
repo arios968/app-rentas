@@ -9,7 +9,7 @@ export const Post = ({ toggleModal }) => {
   };
   return (
     <>
-      <p className="text-2xl font-bold mb-4 text-primary">
+      <p className="text-2xl font-bold mb-4 text-gray-medium">
         ¿Como publicar un inmueble?
       </p>
       <p className="text-start text-sm pl-2">
@@ -18,7 +18,7 @@ export const Post = ({ toggleModal }) => {
       <p className="text-start text-sm pl-2 my-1">
         ● LLene todos los campos del formulario{" "}
       </p>
-      <p className="text-start text-sm pl-2">● Presione el botón "guardar"</p>
+      <p className="text-start text-sm pl-2">● Presione el botón "Publicar"</p>
       <div className="flex gap-4 justify-center mt-6 items-center">
         <button className="button" onClick={closeModal}>
           Aceptar
